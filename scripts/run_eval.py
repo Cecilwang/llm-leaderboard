@@ -45,13 +45,14 @@ else:
     raise FileNotFoundError("config.yaml file does not exist.")
 
 # W&B setup and artifact handling
-wandb.login()
+#wandb.login()
 run = wandb.init(
     entity=cfg_dict["wandb"]["entity"],
     project=cfg_dict["wandb"]["project"],
     name=cfg_dict["wandb"]["run_name"],
     config=cfg_dict,
     job_type="evaluation",
+    dir=cfg_dict["wandb"]["log_dir"],
 )
 
 # Initialize the WandbConfigSingleton
